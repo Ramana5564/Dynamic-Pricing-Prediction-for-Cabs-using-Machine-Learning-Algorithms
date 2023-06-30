@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Cab Price</title>
+        
+        
+         <style>
+         
+         body {
+             font-family: Arial, sans-serif;
+             background-color: #f2f2f2;
+             margin: 0;
+             padding: 20px;
+           }
+           
+           form {
+             background-color: #fff;
+             padding: 20px;
+             border-radius: 5px;
+             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+             max-width: 400px;
+             margin: 0 auto;
+           }
+           
+           h1 {
+             text-align: center;
+             color: #333;
+           }
+           
+           label {
+             display: block;
+             font-weight: bold;
+             margin-bottom: 5px;
+           }
+           
+           input[type="submit"] {
+             background-color: #333;
+             color: #fff;
+             padding: 10px 20px;
+             border: none;
+             border-radius: 4px;
+             cursor: pointer;
+             font-size: 16px;
+           }
+           
+           input[type="submit"]:hover {
+             background-color: #555;
+           }
+           
+           .select {
+             width: 100%;
+             padding: 10px;
+             border: 1px solid #ccc;
+             border-radius: 4px;
+             box-sizing: border-box;
+             margin-bottom: 10px;
+           }
+           
+           p {
+             margin: 10px 0;
+           }
+           
+           /* Additional styling for select boxes */
+           
+           .select-container {
+             margin-bottom: 20px;
+           }
+           
+           .select-label {
+             display: block;
+             font-weight: bold;
+             margin-bottom: 5px;
+           }
+           
+           .select {
+             width: 100%;
+             padding: 10px;
+             border: 1px solid #ccc;
+             border-radius: 4px;
+             box-sizing: border-box;
+           }
+           
+           /* Add gap between rows */
+           
+           .row {
+             margin-bottom: 20px;
+           }
+
+           .result{
+            text-align: center;
+             
+           }
+         
+         </style>
+         
+         <script language="javascript" type="text/javascript">
+            function dynamicdropdown(listindex)
+            {
+                switch (listindex)
+                {
+                case "uber" :
+                    document.getElementById("status").options[0]=new Option("Select status","");
+                    document.getElementById("status").options[1]=new Option("Black","black");
+                    document.getElementById("status").options[2]=new Option("Black SUV","black_suv");
+                    document.getElementById("status").options[3]=new Option("Taxi","taxi");
+                    document.getElementById("status").options[4]=new Option("Uber Pool","uber_pool");
+                    document.getElementById("status").options[5]=new Option("Uber X","uber_x");
+                    document.getElementById("status").options[6]=new Option("Uber XL","uber_xl");
+                    document.getElementById("status").options[7]=new Option("WAV","wav");
+                    break;
+                case "lyft" :
+                    document.getElementById("status").options[0]=new Option("Select status","");
+                    document.getElementById("status").options[1]=new Option("Lux","lux");
+                    document.getElementById("status").options[2]=new Option("Lux Black","lux_black");
+                    document.getElementById("status").options[3]=new Option("Lux Black XL","lux_black_xl");
+                    document.getElementById("status").options[4]=new Option("Lyft","lyft");
+                    document.getElementById("status").options[5]=new Option("Lyft XL","lyft_xl");
+                    document.getElementById("status").options[6]=new Option("Shared","shared");
+                    break;
+                }
+                return true;
+            }
+        </script>
+        <!-- Uber -> Black , Black_SUV , Taxi , Uber_pool , Uber_X , Uber_XL , WAV -->
+        <!-- Lyft -> Lux , Lux_Black , Lux_Black_XL , Lyft , Lyft_XL , Shared -->
+        
+        
+    </head>
+    <body>
+      <br>
+    <h1>Dynamic Pricing Prediction for Cabs using Machine Learning Algorithms</h1>
+    <br>
+   
+        <form class="" action="/login" method="post">
+            <div class="row" id="category_div">
+              <label class="select-label">Choose Cab</label>
+              <select class="select" id="source" name="cab" onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
+                <option value="">Select</option>
+                <option value="uber">Uber</option>
+                <option value="lyft">Lyft</option>
+              </select>
+            </div>
+          
+            <div class="row" id="sub_category_div">
+              <label class="select-label" for="cab_type">Choose Cab Type</label>
+              <script type="text/javascript" language="JavaScript">
+                    document.write('<select class="select" name="status" id="status"><option value="">Select status</option></select>')
+              </script>
+        
+              <!-- <select class="select" id="status" name="status"></select> -->
+             
+            </div>
+          
+            <div class="row">
+              <label class="select-label" for="source">Choose Source</label>
+              <select class="select" name="source">
+                <option value="Select">Select</option>
+                <option value="Back_Bay">Back Bay</option>
+                <option value="Beacon_Hill">Beacon Hill</option>
+                <option value="Boston_University">Boston University</option>
+                <option value="Fenway">Fenway</option>
+                <option value="Haymarket_Square">Haymarket Square</option>
+                <option value="North_End">North End</option>
+                <option value="North_Station">North Station</option>
+                <option value="Financial_District">Financial District</option>
+                <option value="South_Station">South Station</option>
+                <option value="Theatre_District">Theatre District</option>
+                <option value="West_End">West End</option>
+                <option value="Northeastern_University">Northeastern University</option>
+              </select>
+            </div>
+          
+            <div class="row">
+              <label class="select-label" for="destination">Choose Destination</label>
+              <select class="select" name="destination">
+                <option value="Select">Select</option>
+                <option value="Back_Bay">Back Bay</option>
+                <option value="Beacon_Hill">Beacon Hill</option>
+                <option value="Boston_University">Boston University</option>
+                <option value="Fenway">Fenway</option>
+                <option value="Haymarket_Square">Haymarket Square</option>
+                <option value="North_End">North End</option>
+                <option value="North_Station">North Station</option>
+                <option value="Financial_District">Financial District</option>
+                <option value="South_Station">South Station</option>
+                <option value="Theatre_District">Theatre District</option>
+                <option value="West_End">West End</option>
+                <option value="Northeastern_University">Northeastern University</option>
+              </select>
+            </div>
+            <label for="date-input">Date</label>
+            <input type="date" id="date-input" name="date" class="select">
+            <br>
+            <label for="time-input">Time</label>
+            <input type="time" id="time-input" name="time" class="select">
+
+            
+
+            <div id="result"></div>
+
+            <script>
+    function showDateTime() {
+      var dateInput = document.getElementById('date-input').value;
+      var timeInput = document.getElementById('time-input').value;
+
+      var result = "Selected date and time: " + dateInput + " " + timeInput;
+      document.getElementById('result').textContent = result;
+    }
+  </script><br><br>
+          
+            <div class="row" style="text-align: center;">
+              <input type="submit" name="" value="Submit">
+            </div>
+          </form><br><br>
+        <div class="result"> <b>{{y}}</b></div>  
+        
+    </body>
+</html>
